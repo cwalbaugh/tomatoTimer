@@ -1,0 +1,175 @@
+/*base styles */
+:root {
+	--color-main: #49608D;
+	--color-highlight: #B5B9C2;
+	--color-countdown: rgba(171, 31, 31, 0.9);
+	--hourglass-size: 250px;
+	--duration: 1500s;
+	box-sizing: border-box;
+}
+*,
+::before,
+::after {
+	box-sizing: inherit;
+}
+
+body {
+	background-color: var(--color-main);
+	color: var(--color-highlight);
+	text-align: center;
+}
+.container {
+	max-width: 600px;
+	margin: auto;
+}
+
+.time-selection {
+	margin-bottom: 1em;
+}
+input {
+	background-color: transparent;
+	border: none;
+	color: var(--color-highlight);
+	width: 3em;
+	text-align: center;
+	font-size: 1.3rem;
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	color: var(--color-highlight);
+}
+
+.hourglass {
+	font-size: 2.5rem;
+}
+
+
+#start-stop {
+	font-size: 1.75rem;
+}
+.pomodoro-selector, .break-selector {
+	display: flex;
+	flex-direction: column-reverse;
+}
+.button-container {
+	padding: .8em;
+}
+.button-container > button {
+	display: block;
+	margin: auto;
+	margin-top: .3em;
+}
+.label div {
+	padding: 1em 1em .1em 1em;
+}
+h2 {
+	margin-bottom: .3em;
+}
+/* Grid Styles */
+
+
+.row::after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+[class*="column-"] {
+	float: left;
+}
+
+.column-1 { width: 8.3333%; }
+.column-2 { width: 16.6667%; }
+.column-3 { width: 25%; }
+.column-4 { width: 33.3333%; }
+.column-5 { width: 41.6667%; }
+.column-6 { width: 50%; }
+.column-7 { width: 58.3333%; }
+.column-8 { width: 66.6667%; }
+.column-9 { width: 75%; }
+.column-10 { width: 83.3333%; }
+.column-11 { width: 91.6667%; }
+.column-12 { width: 100%; }
+
+/* draw circles */
+
+.time-selection > div[class*="-selector"] {
+	background-image: radial-gradient(circle closest-side, var(--color-main) 0, var(--color-main) 73%, var(--color-highlight) 75%, var(--color-main) 77%);
+}
+
+.time-selection > div > * {
+	line-height: 3.5em;
+}
+/*draw hourglass */
+.container-hourglass {
+	margin: auto;
+	position: relative;
+}
+.hourglass {
+	background-color: rgba(0,0,0,.1);
+	margin: auto;
+	padding: 1em;
+	width: var(--hourglass-size);
+	height: var(--hourglass-size);
+	border-radius: 100%;
+	position: relative;
+}
+
+.mask {
+	position: absolute;
+	z-index: 3;
+	border-radius: 100%;
+	top: 0;
+	left: 0;
+	background-color: var(--color-main);
+	width: 100%;
+	height: 100%;
+}
+.timer-contents {
+	height: 100%;
+	padding-top: calc(var(--hourglass-size) / 5);
+}
+/*svg styling for hourglass */
+svg {
+	transform: rotate(-90deg);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 4;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+}
+svg path {
+  fill: none;
+  stroke-width: 20px;
+  stroke-miterlimit: round;
+}
+.bg {
+	stroke: var(--color-highlight);
+}
+.meter {
+	transition: stroke-dashoffset 1ms linear;
+	stroke: var(--color-countdown);
+}
+/* media queries */
+@media (max-width: 380px) {
+	.time-selection > div > * {
+		width: 100%;
+	}
+	#start-stop {
+		font-size: 1.5rem;
+	}
+}
+
+@media (min-width: 380px) {
+	.time-selection > div {
+		display: block;
+	}
+}
+
