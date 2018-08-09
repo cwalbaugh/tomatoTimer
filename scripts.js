@@ -14,7 +14,10 @@ document.addEventListener('keyup', function(event) {
 		if (!isOn) { startCount();}
 	}
 });
-let buzzer = new Audio('../audio/buzzer.mp3')
+Audio('https://freesound.org/data/previews/21/21871_87792-lq.mp3')
+
+//Audio found at:
+//https://freesound.org/people/nofeedbak/sounds/21871/#
 
 
 
